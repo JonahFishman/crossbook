@@ -1,0 +1,59 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      # Generates the Prisma client via postinstall; no database connection needed.
+      - run: npm ci
+      - run: npm --prefix client ci
+
+      - name: Typecheck server
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm test
+
+      - name: Build client and server
+        run: npm run build
+
+  # Render's auto-deploy relies on a GitHub webhook that only its browser OAuth flow can
+  # install, and this service was created through the API before the repo was connected, so
+  # no webhook exists. Deploying from CI instead is arguably better: a push only reaches
+  # production after typecheck, tests and a clean build, which a repo webhook would not wait for.
+  deploy:
+    needs: check
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render deploy
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+          RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+        run: |
+          if [ -z "$RENDER_API_KEY" ]; then
+            echo "RENDER_API_KEY not set; skipping deploy." && exit 0
+          fi
+          response=$(curl -sS -w '\n%{http_code}' -X POST \
+            "https://api.render.com/v1/services/$RENDER_SERVICE_ID/deploys" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H 'content-type: application/json' -d '{}')
+          code=$(echo "$response" | tail -1)
+          echo "$response" | head -n -1
+          # Render answers a deploy request with 202 Accepted, not 201. Accept any 2xx.
+          case "$code" in
+            2??) echo "Deploy triggered (HTTP $code)." ;;
+            *)   echo "Render returned $code" && exit 1 ;;
+          esac

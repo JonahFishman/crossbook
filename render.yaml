@@ -1,0 +1,25 @@
+# Render blueprint. One web service serving both the Express API and the built
+# React app, so the session cookie is first-party and there is no CORS to configure.
+services:
+  - type: web
+    name: crossbook
+    runtime: node
+    plan: free
+    region: oregon
+    buildCommand: npm install --include=dev && npm run build && npm run migrate:deploy
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      # Paste these in the Render dashboard; sync:false keeps them out of the repo.
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_URL_UNPOOLED
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_POLL_SECRET
+        generateValue: true
