@@ -81,6 +81,9 @@ export const api = {
  */
 export function pct(n: number | null | undefined, digits?: number): string {
   if (n == null || Number.isNaN(n)) return '--';
-  const places = digits ?? (Math.abs(n) < 0.05 ? 2 : 1);
+  // Round before choosing precision. Two spreads that are both 5% can land either side of a
+  // raw 0.05 test through float error, which rendered one as "5.0%" and the other "5.00%".
+  const rounded = Math.round(Math.abs(n) * 1e6) / 1e6;
+  const places = digits ?? (rounded < 0.05 ? 2 : 1);
   return `${(n * 100).toFixed(places)}%`;
 }
