@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0d1117;
+  --color-panel: #161b22;
+  --color-edge: #272e38;
+  --color-muted: #8b949e;
+  --color-kalshi: #d97706;
+  --color-poly: #2563eb;
+}
+
+html {
+  background-color: var(--color-ink);
+  color-scheme: dark;
+}
+
+/* Rows fade and slide in as the board loads. Staggered from the component with a delay. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-rise {
+  animation: rise 0.35s ease-out both;
+}
+
+/* The spread badge pulses briefly when its value changes after a refetch. */
+@keyframes flash {
+  0% {
+    background-color: color-mix(in srgb, var(--color-amber-400) 45%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.animate-flash {
+  animation: flash 1.1s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise,
+  .animate-flash {
+    animation: none;
+  }
+}
