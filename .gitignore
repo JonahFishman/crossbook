@@ -1,0 +1,26 @@
+# Local env
+.env
+.env.*
+!.env.example
+
+node_modules/
+
+# Build output
+dist/
+build/
+client/dist/
+*.tsbuildinfo
+
+*.log
+npm-debug.log*
+
+# Editors
+.vscode/
+.idea/
+
+# Credentials
+*.pem
+*.key
+
+.DS_Store
+.neon

@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "fomc-sep-2026-no-change",
+    "label": "Fed holds rates at the September 2026 meeting",
+    "resolutionNote": "Both resolve on the FOMC's 16 Sep 2026 decision for the upper bound of the target federal funds range. Kalshi phrases it as a 0bps hike; Polymarket as 'no change'. Same event, same measure, same date.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-26SEP-H0",
+    "kalshiEventTicker": "KXFEDDECISION-26SEP",
+    "polymarketId": "2252244",
+    "polymarketUrl": "https://polymarket.com/market/will-there-be-no-change-in-fed-interest-rates-after-the-september-2026-meeting-615"
+  },
+  {
+    "slug": "fomc-sep-2026-hike-25",
+    "label": "Fed hikes 25bps at the September 2026 meeting",
+    "resolutionNote": "Both resolve on the FOMC's 16 Sep 2026 decision, +25bps to the upper bound of the target range. Identical criteria.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-26SEP-H25",
+    "kalshiEventTicker": "KXFEDDECISION-26SEP",
+    "polymarketId": "2252245",
+    "polymarketUrl": "https://polymarket.com/market/will-the-fed-increase-interest-rates-by-25-bps-after-the-september-2026-meeting-649"
+  },
+  {
+    "slug": "trump-impeached-before-2029",
+    "label": "Trump impeached before 20 Jan 2029",
+    "resolutionNote": "Polymarket spells out that a simple-majority House vote on articles of impeachment suffices and Senate conviction is not required. Kalshi says only 'the President has been impeached before Jan 20, 2029', which means the same thing, since impeachment is by definition the House vote. Same deadline.",
+    "exactMatch": true,
+    "kalshiTicker": "KXIMPEACH-29-JAN20",
+    "kalshiEventTicker": "KXIMPEACH-29",
+    "polymarketId": "1643703",
+    "polymarketUrl": "https://polymarket.com/market/will-trump-be-impeached-before-his-term-ends"
+  },
+  {
+    "slug": "starships-dock-before-2028",
+    "label": "Two SpaceX Starships dock before 2028",
+    "resolutionNote": "Both require two Starships to dock in stable Earth orbit by 31 Dec 2027. Polymarket adds a precision clause (mating hardware, joined for 60+ continuous seconds) that Kalshi leaves implicit, so Polymarket is very slightly stricter.",
+    "exactMatch": true,
+    "kalshiTicker": "KXSTARSHIPDOCK-28",
+    "kalshiEventTicker": "KXSTARSHIPDOCK-28",
+    "polymarketId": "2507003",
+    "polymarketUrl": "https://polymarket.com/market/will-two-spacex-starships-dock-together-by-december-31-2027"
+  },
+  {
+    "slug": "us-recession-by-end-2027",
+    "label": "US recession by the end of 2027",
+    "resolutionNote": "NOT a clean match, kept deliberately as a worked example. Kalshi needs two consecutive negative BEA GDP quarters within Q4 2026-Q4 2027. Polymarket accepts the same GDP rule over a wider Q2 2025-Q4 2027 window AND separately resolves Yes if NBER declares a recession. Polymarket is strictly easier to resolve Yes, so part of this spread is definitional rather than disagreement.",
+    "exactMatch": false,
+    "kalshiTicker": "KXRECSSNBER-27",
+    "kalshiEventTicker": "KXRECSSNBER-27",
+    "polymarketId": "3407418",
+    "polymarketUrl": "https://polymarket.com/market/us-recession-by-end-of-2027-20260807185409760"
+  },
+  {
+    "slug": "fomc-oct-2026-no-change",
+    "label": "Fed holds rates at the October 2026 meeting",
+    "resolutionNote": "Both resolve on the FOMC's October 2026 decision for the upper bound of the target federal funds range, for a 0bps hike, i.e. no change. Kalshi phrases every outcome as a hike of N bps; Polymarket as an increase, decrease or no change. Same meeting, same measure, same date.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-26OCT-H0",
+    "kalshiEventTicker": "KXFEDDECISION-26OCT",
+    "polymarketId": "2589812",
+    "polymarketUrl": "https://polymarket.com/market/will-there-be-no-change-in-fed-interest-rates-after-the-october-2026-meeting-20260617190324031"
+  },
+  {
+    "slug": "fomc-oct-2026-hike-25",
+    "label": "Fed hikes 25bps at the October 2026 meeting",
+    "resolutionNote": "Both resolve on the FOMC's October 2026 decision for the upper bound of the target federal funds range, for a 25bps hike. Kalshi phrases every outcome as a hike of N bps; Polymarket as an increase, decrease or no change. Same meeting, same measure, same date.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-26OCT-H25",
+    "kalshiEventTicker": "KXFEDDECISION-26OCT",
+    "polymarketId": "2589813",
+    "polymarketUrl": "https://polymarket.com/market/will-the-fed-increase-interest-rates-by-25-bps-after-the-october-2026-meeting-20260617190324032"
+  },
+  {
+    "slug": "fomc-dec-2026-no-change",
+    "label": "Fed holds rates at the December 2026 meeting",
+    "resolutionNote": "Both resolve on the FOMC's December 2026 decision for the upper bound of the target federal funds range, for a 0bps hike, i.e. no change. Kalshi phrases every outcome as a hike of N bps; Polymarket as an increase, decrease or no change. Same meeting, same measure, same date.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-26DEC-H0",
+    "kalshiEventTicker": "KXFEDDECISION-26DEC",
+    "polymarketId": "3215007",
+    "polymarketUrl": "https://polymarket.com/market/will-there-be-no-change-in-fed-interest-rates-after-the-december-2026-meeting-20260729232808635"
+  },
+  {
+    "slug": "fomc-dec-2026-hike-25",
+    "label": "Fed hikes 25bps at the December 2026 meeting",
+    "resolutionNote": "Both resolve on the FOMC's December 2026 decision for the upper bound of the target federal funds range, for a 25bps hike. Kalshi phrases every outcome as a hike of N bps; Polymarket as an increase, decrease or no change. Same meeting, same measure, same date.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-26DEC-H25",
+    "kalshiEventTicker": "KXFEDDECISION-26DEC",
+    "polymarketId": "3215008",
+    "polymarketUrl": "https://polymarket.com/market/will-the-fed-increase-interest-rates-by-25-bps-after-the-december-2026-meeting-20260729232808636"
+  },
+  {
+    "slug": "fomc-jan-2027-no-change",
+    "label": "Fed holds rates at the January 2027 meeting",
+    "resolutionNote": "Both resolve on the FOMC's January 2027 decision for the upper bound of the target federal funds range, for a 0bps hike, i.e. no change. Kalshi phrases every outcome as a hike of N bps; Polymarket as an increase, decrease or no change. Same meeting, same measure, same date.",
+    "exactMatch": true,
+    "kalshiTicker": "KXFEDDECISION-27JAN-H0",
+    "kalshiEventTicker": "KXFEDDECISION-27JAN",
+    "polymarketId": "3215012",
+    "polymarketUrl": "https://polymarket.com/market/will-there-be-no-change-in-fed-interest-rates-after-the-january-2027-meeting-20260729233815505"
+  },
+  {
+    "slug": "oscar-best-picture-odyssey",
+    "label": "The Odyssey wins Best Picture",
+    "resolutionNote": "Both resolve on Best Picture at the 99th Academy Awards for the same film. Kalshi lists a later administrative close date, but the resolving event is the single ceremony.",
+    "exactMatch": true,
+    "kalshiTicker": "KXOSCARPIC-27-ODY",
+    "kalshiEventTicker": "KXOSCARPIC-27",
+    "polymarketId": "3145011",
+    "polymarketUrl": "https://polymarket.com/market/will-the-odyssey-win-best-picture-at-the-99th-academy-awards-20260727173620859"
+  },
+  {
+    "slug": "oscar-best-picture-dune",
+    "label": "Dune: Part Three wins Best Picture",
+    "resolutionNote": "Same as the other Best Picture pairs: one film, one ceremony, the 99th Academy Awards on both venues.",
+    "exactMatch": true,
+    "kalshiTicker": "KXOSCARPIC-27-DUN",
+    "kalshiEventTicker": "KXOSCARPIC-27",
+    "polymarketId": "3145010",
+    "polymarketUrl": "https://polymarket.com/market/will-dune-part-three-win-best-picture-at-the-99th-academy-awards-20260727173620858"
+  },
+  {
+    "slug": "oscar-best-picture-wild-horse-nine",
+    "label": "Wild Horse Nine wins Best Picture",
+    "resolutionNote": "Same as the other Best Picture pairs: one film, one ceremony, the 99th Academy Awards on both venues.",
+    "exactMatch": true,
+    "kalshiTicker": "KXOSCARPIC-27-WIL",
+    "kalshiEventTicker": "KXOSCARPIC-27",
+    "polymarketId": "3145013",
+    "polymarketUrl": "https://polymarket.com/market/will-wild-horse-nine-win-best-picture-at-the-99th-academy-awards-20260727173620861"
+  },
+  {
+    "slug": "greenland-us-acquires-2026",
+    "label": "US acquires part of Greenland before 2027",
+    "resolutionNote": "Both close 31 Dec 2026 and both ask whether the US acquires any part of Greenland, not the whole island. Polymarket adds that only a transfer of sovereignty counts, where Kalshi just says \"acquires\", so Polymarket is fractionally the stricter of the two.",
+    "exactMatch": true,
+    "kalshiTicker": "KXGREENTERRITORY-29-27",
+    "kalshiEventTicker": "KXGREENTERRITORY-29",
+    "polymarketId": "1126504",
+    "polymarketUrl": "https://polymarket.com/market/will-the-us-acquire-any-part-of-greenland-in-2026"
+  }
+]

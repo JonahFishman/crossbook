@@ -1,0 +1,106 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DATABASE_URL_UNPOOLED")
+}
+
+enum Venue {
+  KALSHI
+  POLYMARKET
+}
+
+model User {
+  id           String          @id @default(cuid())
+  email        String          @unique
+  passwordHash String
+  createdAt    DateTime        @default(now())
+  watchlist    WatchlistItem[]
+}
+
+model Topic {
+  id             String          @id @default(cuid())
+  slug           String          @unique
+  label          String
+  resolutionNote String
+  /// False when the two venues' resolution criteria differ in a way that makes the
+  /// spread partly definitional rather than genuine disagreement. Surfaced in the UI.
+  exactMatch     Boolean         @default(true)
+  createdAt      DateTime        @default(now())
+  venueMarkets   VenueMarket[]
+  watchedBy      WatchlistItem[]
+}
+
+model VenueMarket {
+  id          String          @id @default(cuid())
+  topicId     String
+  topic       Topic           @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  venue       Venue
+  externalId  String
+  externalUrl String
+  question    String
+  /// Refreshed from the venue on every poll. A topic whose earliest closesAt is in the past
+  /// has been decided, so the board can retire it without anyone editing the seed file.
+  closesAt    DateTime?
+  snapshots   PriceSnapshot[]
+
+  @@unique([topicId, venue])
+}
+
+model PriceSnapshot {
+  id            String      @id @default(cuid())
+  venueMarketId String
+  venueMarket   VenueMarket @relation(fields: [venueMarketId], references: [id], onDelete: Cascade)
+  yesBid        Float
+  yesAsk        Float
+  volume        Float?
+  fetchedAt     DateTime    @default(now())
+
+  /// fetchedAt is indexed descending on purpose. The board's "latest snapshot per market"
+  /// query is DISTINCT ON (venueMarketId) ORDER BY venueMarketId, fetchedAt DESC; with an
+  /// ascending index Postgres can only use venueMarketId as a presorted key and still has to
+  /// sort every row of history within each group. Descending makes it a plain index scan that
+  /// stops after the first row per market. Range scans for the history chart work either way.
+  @@index([venueMarketId, fetchedAt(sort: Desc)])
+}
+
+model WatchlistItem {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topicId   String
+  topic     Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, topicId])
+}
+
+/// Created at runtime by connect-pg-simple, which owns its lifecycle. It is declared here
+/// only so Prisma does not treat it as schema drift and demand a database reset.
+model Session {
+  sid    String   @id @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire], map: "IDX_session_expire")
+  @@map("session")
+}
+
+/// Shared counter for the auth rate limiter.
+///
+/// express-rate-limit's default store keeps counts in process memory. Measured against the
+/// deployed service, requests round-robin across more than one process, so each kept its own
+/// tally and the effective limit was a multiple of the configured one; the free tier also
+/// sleeps, which would discard the counts entirely. Keeping them in Postgres makes the limit
+/// mean what it says, at the cost of one small write per attempt.
+model RateLimitCounter {
+  key         String
+  windowStart DateTime
+  hits        Int      @default(0)
+  expiresAt   DateTime
+
+  @@id([key, windowStart])
+  @@index([expiresAt])
+}
