@@ -35,10 +35,6 @@ There are unit tests for the pricing math and both adapters, a probe script that
 two APIs still behave the way the adapters assume, and CI that typechecks, tests and builds
 before deploying.
 
-## Time spent
-
-About six hours.
-
 ## Running it
 
 Live link's above. Free tier, so if nobody's visited recently the first load takes 30 to 60
